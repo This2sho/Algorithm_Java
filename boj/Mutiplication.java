@@ -1,7 +1,8 @@
 package boj;
+// 백준 2588번 문제
 import java.util.*;
 
-class Main{
+class Mutiplication{
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
         int first = scanner.nextInt();

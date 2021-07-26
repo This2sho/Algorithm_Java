@@ -2,7 +2,7 @@ package boj;
 // 백준 9498번 문제
 import java.util.Scanner;
 
-public class test {
+public class TestScore {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int score = scanner.nextInt();

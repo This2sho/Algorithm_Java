@@ -1,3 +1,4 @@
+package boj;
 import java.util.Scanner;
 
 /*
@@ -30,6 +31,8 @@ public class average_over {
             for(int j=0; j<N; ++j){
                 arr[j] = scanner.nextInt();
             }
+        scanner.close();
+
             double avg= average(arr);
             int cnt = 0;
             for(int score : arr){

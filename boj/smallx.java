@@ -13,6 +13,7 @@ public class smallx {
         for(int i=0; i<N; ++i){
             arr[i] = scanner.nextInt();
         }
+        scanner.close();
 
         for(int i=0; i<N; ++i){
             if(arr[i] < X){

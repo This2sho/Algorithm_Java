@@ -7,7 +7,7 @@ class Mutiplication{
         Scanner scanner = new Scanner(System.in);
         int first = scanner.nextInt();
         int second = scanner.nextInt();
-        
+        scanner.close();
         int second_1 = second % 10;
         int second_2 = second % 100 / 10;
         int second_3 = second / 100;

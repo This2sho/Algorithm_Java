@@ -19,6 +19,8 @@ public class factorial {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
+        scanner.close();
+
         
         System.out.print(fact(N));
     }

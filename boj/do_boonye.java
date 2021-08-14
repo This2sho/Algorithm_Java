@@ -21,7 +21,7 @@ boj # 2775
 3층의 2호
 2층의 1호=> 1 + 2층의 2호 = 1층의 1호=> 1 + 1층의 2호 = 3
 */
-class Main{
+class do_boonye{
     public static int how_many_people_live(int a, int b){
         // if(a < 0) {
         //     System.out.println("입력된 층이 음수 입니다.");

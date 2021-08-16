@@ -21,16 +21,50 @@ boj #15649
 2
 3
 
+3 2
+
+1 2
+1 3
+2 1
+2 3
+3 1
+3 2
+
+3 3
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+
+for i = 1 ; i <= N; ++i;
+
 */
 
 public class n_m {
+    static int[] nums;
+    static int[] results;
+    static void init_nums(int N, int M){
+        nums = new int[N];
+        results = new int[M];
+        for(int i=0; i<N; ++i){
+            nums[i] = i+1;
+        }
+    }
+    static void permutation(int n, int m, int[] can){
+        
+    }
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int m = scanner.nextInt();
 
-        System.out.printf("%d, %d\n", n, m);
+        init_nums(n, m);
 
+        System.out.printf("%d, %d\n", n, m);
+        System.out.println(nums.length);
+        System.out.println(results[1]);
     }
     
 }

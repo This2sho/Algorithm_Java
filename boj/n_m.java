@@ -1,5 +1,10 @@
 package boj;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -44,27 +49,46 @@ for i = 1 ; i <= N; ++i;
 
 public class n_m {
     static int[] nums;
-    static int[] results;
-    static void init_nums(int N, int M){
+    public static List<List<Integer>> result = new ArrayList<>();
+    static List<Integer> temp = new ArrayList<>();
+
+    static void init_nums(int N){
         nums = new int[N];
-        results = new int[M];
         for(int i=0; i<N; ++i){
             nums[i] = i+1;
         }
     }
-    static void permutation(int n, int m, int[] can){
-        
+    static void  permutation(List<Integer> temp, int m){
+        if(temp.size() == m){
+            result.add(new ArrayList<>(temp));
+        }else{
+            for(int i=0; i< nums.length; ++i){
+                if(temp.contains(nums[i])){
+                    continue;
+                }
+                temp.add(nums[i]);
+                permutation(temp, m);
+                temp.remove(temp.size()-1);
+            }
+        }
     }
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int m = scanner.nextInt();
+        scanner.close();
 
-        init_nums(n, m);
-
-        System.out.printf("%d, %d\n", n, m);
-        System.out.println(nums.length);
-        System.out.println(results[1]);
+        init_nums(n);
+        permutation(temp, m);
+        for(List<Integer> a : result){
+            for(int b : a){
+                bw.write(b + " ");
+            }
+            bw.append("\n");
+            bw.flush();
+        }
+        bw.close();
     }
     
 }

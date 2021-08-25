@@ -1,5 +1,12 @@
 package boj;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /*
 boj #15651
 
@@ -18,7 +25,44 @@ boj #15651
 */
 
 public class n_m3 {
-    public static void main(String[] args){
-        
+    static int[] nums;
+    static List<Integer> temp = new ArrayList<>();
+    static List<List<Integer>> result = new ArrayList<>();
+    public static void main(String[] args) throws IOException{
+        int N;
+        int M;
+        Scanner scanner = new Scanner(System.in);
+        N = scanner.nextInt();
+        M = scanner.nextInt();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        init(N);
+        combination(M);
+        for(List<Integer> l : result){
+            for(int i : l){
+                bw.write(i + " ");
+            }
+            bw.append("\n");
+        }
+        bw.flush();
+        bw.close();
+    }
+
+    public static void init(int n){
+        nums = new int[n];
+        for(int i=0; i<n; ++i){
+            nums[i] = i+1;
+        }
+    }
+
+    public static void combination(int M){
+        if(temp.size() == M){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        for(int i : nums){
+            temp.add(i);
+            combination(M);
+            temp.remove(temp.size()-1);
+        }
     }
 }

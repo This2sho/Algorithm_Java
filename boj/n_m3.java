@@ -34,6 +34,7 @@ public class n_m3 {
         Scanner scanner = new Scanner(System.in);
         N = scanner.nextInt();
         M = scanner.nextInt();
+        scanner.close();
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         init(N);
         combination(M);

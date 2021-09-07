@@ -1,5 +1,12 @@
 package boj;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
 /*
 boj #1003
 입력
@@ -14,9 +21,49 @@ boj #1003
 0
 1
 3
+
+
+fibo(n) = fibo(n-1) + fibo(n-2)
+
+    0 1
+0 = 1 0
+1 = 0 1
+2 = 1 1
+3 = f(2) + f(1) = 1 1 + 0 1 = 1 2
+4 = f(3) + f(2) = 1 2 + 1 1 = 2 3
+5 = f(4) + f(3) = 2 3 + 1 2 = 3 5
+6 = f(5) + f(4) = 3 5 + 2 3 = 5 8
+cache 사용해야 할 듯.
 */
 public class fibonacci {
-    public static void main(String[] args){
-        
+    static void fib(int n){
+        cache[0] = 0;
+        cache[1] = 1;
+        for(int i=2; i<n+1; ++i){
+            cache[i] = cache[i-1] + cache[i-2];
+        }
+    }
+    
+    static int[] cache = new int[50];
+
+
+    public static void main(String[] args) throws IOException{
+        int N;
+        Scanner scanner = new Scanner(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        N = scanner.nextInt();
+        fib(40);
+
+        for(int i=0; i<N; ++i){
+            int temp = scanner.nextInt();
+            if(temp == 0) bw.append("1 0\n");
+            else if(temp == 2) bw.append("1 1\n");
+            else{
+                bw.append(cache[temp-1] + " " + cache[temp] + "\n");
+            }
+        }
+        bw.flush();
+        scanner.close();
+        bw.close();
     }
 }

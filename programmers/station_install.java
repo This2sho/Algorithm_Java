@@ -59,22 +59,31 @@ class station_install {
             }
             System.out.print("after init [");
             for(int i=0; i<apart.length-1; ++i){
-                System.out.print(" "+ apart[i] + ",");
-                int start = 0;
-                int end = 0;
-                boolean flag = true;
+                System.out.print(" " + apart[i] + ",");
+            }
+            System.out.println(" " + apart[apart.length-1] + " ]");
+            boolean flag = true;
+            int start = 0;
+            int end = 0;
+            for(int i=0; i<apart.length-1; ++i){
                 if(apart[i] == 0 && flag) {
                     start=i+1;
                     end = start;
-                    flag = !flag;
+                    flag = false;
+                    System.out.println("start = " + start);
                 }
                 if(apart[i+1] == 1 && !flag){
                     end = i+1;
+                    System.out.println("end = " + end);
                     al.add(new Pair(start, end));
-                    flag = !flag;
+                    flag = true;
                 }
             }
-            System.out.println(apart[apart.length - 1]+" ]");
+            if(apart[apart.length-1]==0 && !flag){
+                end = apart.length;
+                System.out.println("end = " + end);
+                al.add(new Pair(start, end));
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package programmers.Sort;
 
+import java.util.Arrays;
 import java.util.stream.*;
 
 public class BigNum_simple {
@@ -23,7 +24,6 @@ class Solution2 {
         // for(int i=0; i<strArr.length; i++){
         //     strArr[i] = "" + numbers[i];
         // }
-
         answer = IntStream.of(numbers)
             .mapToObj(String::valueOf)
             .sorted((s1, s2) -> (s2+s1).compareTo(s1+s2))

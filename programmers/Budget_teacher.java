@@ -26,41 +26,25 @@ public class Budget_teacher {
  */
 class Solution2 {
     public int solution(int[] budgets, int M) {
-        int answer = 0;
-        Arrays.sort(budgets);
-        int sum = 0;
-        int budget = M/budgets.length;
-        int remain_budget = M;
-        int max = budgets[budgets.length-1];
+        int min = 0;
+        int max = IntStream.of(budgets).max().orElse(1);
 
-        
-        // Queue<Integer> q = new LinkedList<>();
-        for(int b : budgets){
-            sum += b;
-            // q.offer(b);
-        }
-
-        if(M >= sum){
-            return max;
-        }
-
-        int idx = 0;
-        int lastIdx = budgets.length;
-        // while(!q.isEmpty() && remain_budget > budget*q.size()){
-        //     if(q.peek() < budget){
-        //         remain_budget -= q.poll();
-        //     }
-        //     budget++;
-        // }
-        while(idx<lastIdx && remain_budget > budget*(lastIdx-idx)){
-            if(budgets[idx] < budget){
-                remain_budget -= budgets[idx++];
+        while(min <= max){
+            int mid = (max + min) / 2;
+            int sum = 0;
+            for(int budget : budgets){
+                if(budget <= mid){
+                    sum += budget;
+                }else{
+                    sum += mid;
+                }
             }
-            budget++;
+            
+            if(sum > M){
+                max = mid-1;
+            }else min = mid+1;
         }
-        budget--;
-        answer = budget;     
-        return answer;
+        return max;
     }
 }
 

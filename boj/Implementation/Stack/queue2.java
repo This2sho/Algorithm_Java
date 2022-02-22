@@ -1,48 +1,51 @@
 package boj.Implementation.Stack;
 
+import java.io.*;
 import java.util.*;
 
 public class queue2 {
     
-    public static void main(String[] args){
-        Queue<Integer> q = new LinkedList<>();
-    
-        Scanner scanner = new Scanner(System.in);
-    
-        int orderCount = scanner.nextInt();
+    public static void main(String[] args) throws IOException{
+        LinkedList<Integer> q = new LinkedList<>();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int orderCount = Integer.parseInt(br.readLine());
         
         for(int i=0; i<orderCount; i++){
-            String temp = scanner.next();
-            int value;
+            String order = br.readLine();
+            String temp = order.split(" ")[0];
             switch (temp){
                 case "push":
-                    value = scanner.nextInt();
+                    int value = Integer.parseInt(order.split(" ")[1]);
                     q.add(value);
-
+                    break;
                 case "pop":
-                    if(q.isEmpty()) System.out.println(0);
-                    else System.out.println(q.poll());
-
+                    if(q.isEmpty()) bw.write(-1 + "\n");
+                    else bw.write(q.poll()+ "\n");
+                    break;
                 case "size":
-                    System.out.println(q.size());
-
+                    bw.write(q.size()+ "\n");
+                    break;
                 case "empty":
-                    if(q.isEmpty()) System.out.println(1);
-                    else System.out.println(0);
-
+                    if(q.isEmpty()) bw.write(1+ "\n");
+                    else bw.write(0+ "\n");
+                    break;
                 case "front":
-                    if(q.isEmpty()) System.out.println(-1);
-                    else System.out.println(q.peek());
-
+                    if(q.isEmpty()) bw.write(-1+ "\n");
+                    else bw.write(q.peek()+ "\n");
+                    break;
                 case "back":
-                    if(q.isEmpty()) System.out.println(-1);
-                    else System.out.println(q.offer(q.size()-1));
-
+                    if(q.isEmpty()) bw.write(-1+ "\n");
+                    else bw.write(q.getLast()+ "\n");
+                    break;
                 default:
                     break;
             }
-            
         }
+        br.close();
+        bw.flush();
+        bw.close();
     }
     
 }

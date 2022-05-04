@@ -52,6 +52,7 @@ class Solution {
         //     }
         //     budget++;
         // }
+
         while(idx<lastIdx && remain_budget > budget*(lastIdx-idx)){
             if(budgets[idx] < budget){
                 remain_budget -= budgets[idx++];

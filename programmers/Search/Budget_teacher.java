@@ -1,6 +1,5 @@
-package programmers;
+package programmers.Search;
 
-import java.util.*;
 import java.util.stream.*;
 
 public class Budget_teacher {

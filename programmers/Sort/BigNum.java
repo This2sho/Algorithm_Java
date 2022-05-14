@@ -12,8 +12,9 @@ public class BigNum {
 /**
  * !! 두 문자열을 더해서 비교할 생각을 못했음 
  * + Comparator를 구현할줄 몰랐음...(Stream작성하다 망함.)
- * 그리고 마지막 0으로 시작할ㄷ 때 예외처리도....
+ * 그리고 마지막 0으로 시작할 때 예외처리도....
  */
+
 class Solution {
     public String solution(int[] numbers) {
         String answer = "";

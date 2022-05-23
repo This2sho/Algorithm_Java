@@ -1,4 +1,4 @@
-package boj;
+package boj.week1;
 
 import java.util.Scanner;
 

@@ -43,7 +43,7 @@ public class EXBFS {
 
         while (!queue.isEmpty()) {
             Integer[] integers = queue.poll();
-            DFS(integers[0], integers[1]);
+            BFS(integers[0], integers[1]);
         }
 
         for (int[] ints : cost) {
@@ -55,7 +55,7 @@ public class EXBFS {
 
     }
 
-    public static void DFS(int y, int x) {
+    public static void BFS(int y, int x) {
         if(y == endY && x==endX) return;
 
         for (int i = 0; i < 4; i++) {

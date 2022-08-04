@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 
 // List of Unique Numbers
 public class N13144_re {
-    static int N, res = 0;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
@@ -24,7 +23,6 @@ public class N13144_re {
         while(true) {
             if(right==N) {
                 if(left==N) break;
-
                 else {
                     ans += (right-left);
                     left++;

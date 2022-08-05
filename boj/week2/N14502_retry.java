@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 // 연구소
-public class N14502 {
+public class N14502_retry {
     static int N, M;
     static int[][] map;
     static int[][] virusMap;

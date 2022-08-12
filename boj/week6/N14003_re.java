@@ -1,47 +1,50 @@
 package boj.week6;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
+import java.io.*;
+import java.util.*;
 // 가장 긴 증가하는 부분 수열 5
 public class N14003_re {
-    static int[] arr, lis;
-    static int curIdx = 0, lastIdx = 1, N;
+    static int[] arr, lis, idxArr;
+    static int curIdx = 0, N;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuffer sb = new StringBuffer();
         N = Integer.parseInt(br.readLine());
         arr = new int[N];
         lis = new int[N];
+        idxArr = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i=0; i<N; i++) arr[i] = Integer.parseInt(st.nextToken());
         lis[0] = arr[0];
+        idxArr[0] = 0;
         solve();
-        sb.append((curIdx + 1) + "\n");
-        for (int i = 0; i <= curIdx; i++) sb.append(lis[i] + " ");
+        int idx = Arrays.stream(idxArr).max().getAsInt();
+        sb.append((idx+1) + "\n");
+        Stack<Integer> stack = new Stack<>();
+        for (int i = N - 1; i >= 0 && idx >= 0; i--) {
+            if (idxArr[i] == idx) {
+                stack.add(arr[i]);
+                idx--;
+            }
+        }
+        while(!stack.isEmpty()) sb.append(stack.pop() + " ");
         System.out.print(sb);
     }
 
     static void solve() {
-        while (lastIdx < N) {
-            if (lis[curIdx] < arr[lastIdx]) {
-                lis[++curIdx] = arr[lastIdx];
-                System.out.println("if");
-                printArr();
+        for(int i=1; i<N; i++){
+            if (lis[curIdx] < arr[i]) {
+                idxArr[i] = curIdx+1;
+                lis[++curIdx] = arr[i];
             }else{
-                int idx = binarySearch(0, curIdx, arr[lastIdx]);
-                lis[idx] = arr[lastIdx];
-                System.out.println("else");
-                printArr();
+                int idx = binarySearch(0, curIdx, arr[i]);
+                idxArr[i] = idx;
+                lis[idx] = arr[i];
             }
-            lastIdx++;
         }
     }
 
-    static void printArr() {
-        for (int li : lis) {
+    static void printArr(int[] arr) {
+        for (int li : arr) {
             System.out.print(li + " ");
         }
         System.out.println();
@@ -66,4 +69,12 @@ public class N14003_re {
         }
         return idx;
     }
+
 }
+
+/**
+ * 9
+ * 3 1 4 6 2 2 0 3 6
+ *
+ * 0 0 1 2 1 1 0 2 3
+ */
